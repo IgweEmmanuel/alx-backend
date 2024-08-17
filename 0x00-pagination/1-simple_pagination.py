@@ -41,16 +41,13 @@ class Server:
         return (start_index, end_index)
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
-            """get page and return list of 10 rows
-            """
-            assert isinstance(page, int) and page > 0, \
-                    f"Page index {page} is greater than zero"
-            assert isinstance(page_size, int) and page_size > 0, \
-                    f"Page_size index{page_size} is greater than 0" # noqa
-            start_index, end_index = self.index_range(page, page_size)
-            dataset = self.dataset()
-            if start_index >= len(dataset):
-                return []
-            else:
-                return dataset[start_index:end_index]
-            
+        """get page and return list of 10 rows
+        """
+        assert isinstance(page, int) and page > 0, f"Page index {page} is greater than zero"  # noqa
+        assert isinstance(page_size, int) and page_size > 0, f"Page_size index{page_size} is greater than 0"  # noqa
+        start_index, end_index = self.index_range(page, page_size)
+        dataset = self.dataset()
+        if start_index >= len(dataset):
+            return []
+        else:
+            return dataset[start_index:end_index]
