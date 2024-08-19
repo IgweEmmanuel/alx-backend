@@ -42,9 +42,9 @@ class Server:
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
         """geting hypermedia data with index and page size
         """
-        assert isinstance(index, int) and  index >= 0, f"index {index} is valid"  # noqa
+        assert isinstance(index, int) and index >= 0, f"index {index} is valid"  # noqa
         assert isinstance(page_size, int) and page_size > 0, f"page_size {page_size} is valid"  # noqa
-        
+
         data = self.indexed_dataset()
         data_length = len(data)
 
