@@ -4,7 +4,7 @@ LIFOCache
 """
 BaseCaching = __import__("base_caching").BaseCaching
 from collections import OrderedDict
-cache = OrderedDict()
+
 
 class LRUCache(BaseCaching):
     """
@@ -18,7 +18,8 @@ class LRUCache(BaseCaching):
         super().__init__()
         self.cache = OrderedDict()
         self.cache = self.cache_data
-    def put(self, key, item):
+
+def put(self, key, item):
         """
         put for key items
         Args:
