@@ -19,7 +19,7 @@ class BasicCache(baseCaching):
         Return:
             This returns dictionary
         """
-        if key == None and item == None:
+        if key is None and item is None:
             return
         self.cache_data[key] = item
 
@@ -31,6 +31,6 @@ class BasicCache(baseCaching):
         Return:
             This retuns value of key
         """
-        if key == None or key not in self.cache_data:
+        if key is None or key not in self.cache_data:
             return None
         return self.cache_data[key]
