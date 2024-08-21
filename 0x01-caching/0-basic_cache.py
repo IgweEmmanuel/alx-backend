@@ -9,7 +9,6 @@ class BasicCache(baseCaching):
     Basic Cache inheriting from BaseCaching
     """
 
-
     def put(self, key, item):
         """
         put key value in dictionary
