@@ -15,7 +15,6 @@ class LRUCache(BaseCaching):
         Initializer
         """
         super().__init__()
-        self.hold = []
 
     def put(self, key, item):
         """
