@@ -24,7 +24,7 @@ class LRUCache(BaseCaching):
             key(str): key of dictionary
             item(Any): value of dictionary
         """
-        if key in self.hold:
+        if key in self.cache_data:
             self.hold.remove(key)
 
         if key is not None and item is not None:
