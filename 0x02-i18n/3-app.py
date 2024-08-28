@@ -1,32 +1,45 @@
 #!/usr/bin/env python3
-"""Flask language translation"""
+'''Task 2: Get locale from request
+'''
 
-from flask import Flask, render_template
-from flask_babel import Babel, _
+from flask import Flask, render_template, request
+from flask_babel import Babel
 
-# Initialize the Flask application
-app = Flask(__name__)
 
-# Define the Config class with the necessary settings
 class Config:
+    '''Config class'''
+
+    DEBUG = True
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
-# Apply the configuration to the Flask app
-app.config.from_object(Config)
 
-# Instantiate the Babel object
+app = Flask(__name__)
+app.config.from_object(Config)
+app.url_map.strict_slashes = False
 babel = Babel(app)
 
+
+@babel.localeselector
+def get_locale() -> str:
+    """Retrieves the locale for a web page.
+
+    Returns:
+        str: best match
+    """
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
+
+
 @app.route('/')
-def index():
-    """Render 0-index"""
-    # Use gettext to translate messages
-    home_title = _("home_title")
-    home_header = _("home_header")
-    return render_template("3-index.html", home_title=home_title, home_header=home_header)  # noqa
+def index() -> str:
+    '''default route
+
+    Returns:
+        html: homepage
+    '''
+    return render_template("3-index.html")
+
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000, host="localhost")
-
+    app.run(port=5000, host="0.0.0.0")
